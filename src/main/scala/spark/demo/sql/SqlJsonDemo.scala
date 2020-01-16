@@ -15,7 +15,7 @@ object SqlJsonDemo {
     val dataset = dataFrameReader.json("resources/people.json")
     dataset.printSchema
 
-    // зЂВс
+    //
     dataset.createTempView("people")
     val teenagers = sparkSession.sql("SELECT name FROM people WHERE age >= 13 AND age <= 99")
     val names = teenagers.rdd.map(row => {

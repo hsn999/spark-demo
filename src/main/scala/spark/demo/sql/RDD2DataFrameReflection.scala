@@ -41,7 +41,10 @@ object RDD2DataFrameReflection {
     for (s <- rows) {
       println(s)
     }
-
+    
+    
+    // /tmp hadoop fs -chmod 777 /tmp  save to hdfs
+    persons.write.parquet("hdfs://192.168.1.123:8020/tmp/p.parquet")
 
   }
 

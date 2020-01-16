@@ -45,13 +45,13 @@ object KMeansExample {
     //val sameModel = KMeansModel.load(sc, "target/org/apache/spark/KMeansExample/KMeansModel")
     // $example off$
 
-    //输出最终3个类簇的质心
+    //3涓被绨囩殑璐ㄥ績
     println("Cluster centers:")
     for (c <- clusters.clusterCenters) {
       println(c.toString)
     }
 
-    //使用模型测试单点数据
+    //娴嬭瘯鍗曠偣鏁版嵁
     println(" ")
     val v1 = Vectors.dense("6.5 4.444 3.0".split(" ").map(_.toDouble))
 
