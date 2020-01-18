@@ -1,5 +1,7 @@
 package spark.demo;
 
+import spark.demo.*;
+
 
 public class Main {
     public static void main(String[] args) {
