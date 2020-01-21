@@ -11,8 +11,26 @@ import org.apache.spark.{ SparkConf, SparkContext }
 import scala.util.control._
 import org.apache.commons.lang3.StringUtils
 
+import java.text.SimpleDateFormat
+import java.util.Date
+
+
 
 object ReMainUser {
+  
+  def tranTimeToLong(tm:String) :Long={
+    val fm = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+    val dt = fm.parse(tm)
+    val aa = fm.format(dt)
+    val tim: Long = dt.getTime()
+    tim
+  }
+  
+    def StringToTime(tm:String) :Date={
+    val fm = new SimpleDateFormat("yyyy-MM-dd")
+    val dt = fm.parse(tm.trim().toString())
+    dt
+  }
 
   def main(args: Array[String]): Unit = {
 
@@ -81,13 +99,23 @@ object ReMainUser {
   val re = sparkSession.sql(sql1)
   
   re.printSchema()
-  re.createTempView("eventinfo1")
+  re.createOrReplaceTempView("eventinfo1")
+  re.show()
+  //import org.apache.spark.sql.functions.to_json  
+  //eventinfo1.select(to_json(struct($"c1", $"c2", $"c3")))
   
+  //re.se
   
+  /*val shapeTime = udf((time:String) => {
+     time.replaceAll("\\+"," ")
+   })*/
   
-  sparkSession.sql("SELECT to_date(login_time),day(login_time),to_timestamp(login_time,'yyyy-MM-dd') aaa,login_time from eventinfo1").show()
-  re.printSchema()
+  import org.joda.time.{DateTimeZone}
+  import org.joda.time.format
   
+  val xxx = sparkSession.sql("SELECT login_time,to_date(concat(xc.login_time,' ')),to_timestamp(xc.login_time,'yyyy-MM-dd') aaa,login_time from eventinfo1 xc")
+  xxx.printSchema()
+  xxx.show()
   /*val sql2 ="SELECT  appkey, platform, appver, channel, udid, trim(first_day) as first_day, to_timestamp(trim(first_day),'yyyy-MM-dd') as logdate, datediff(to_timestamp(login_time,'yyyy-MM-dd'),to_timestamp(first_day,'yyyy-MM-dd')) as by_day " + //获取应用、平台、版本、渠道、用户、所有登录时间、首次登陆时间,时间差，并按照这些字段分组
           "FROM " +
                   "(SELECT b.appkey, b.platform, b.appver, b.channel, b.udid, b.login_time,c.first_day " + //获取应用、平台、版本、渠道、用户、所有登录时间、首次登陆时间，并按照这些字段分组
@@ -102,7 +130,7 @@ object ReMainUser {
       sparkSession.sql(sql2).show(1000,false) */
       
       
-      sparkSession.sql("SELECT to_date('2016-12-31', 'yyyy-MM-dd')").show()
+    sparkSession.sql("SELECT to_date('2016-12-31', 'yyyy-MM-dd')").show()
 
     
    /* val remainSql = "SELECT appkey, platform, appver, channel, first_day," +
