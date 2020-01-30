@@ -5,7 +5,7 @@ import spark.demo.*;
 
 public class Main {
     public static void main(String[] args) {
-        // 调用scala中的方法，方法为object下的成员，都是静态方法，java中可以直接调用
+        /*// 调用scala中的方法，方法为object下的成员，都是静态方法，java中可以直接调用
         String info = ScalaMain.sayScala(1);
         System.out.println(info);
  
@@ -17,7 +17,7 @@ public class Main {
         ScalaTestClass st = new ScalaTestClass();
         st.hix("dd");
         
-        KMeansExample.main(null);
+        KMeansExample.main(null);*/
     }
  
     /**
