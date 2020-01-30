@@ -8,7 +8,7 @@ import org.apache.spark.sql.{ RowFactory, SparkSession }
 import org.apache.spark.{ SparkConf, SparkContext }
 //import scala.collection.JavaConverters._
 
-object RDDTest {
+object RDDTest { 
  
   def main(args: Array[String]): Unit = {
 
