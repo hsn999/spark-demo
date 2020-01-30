@@ -9,7 +9,7 @@ import org.apache.spark.{ SparkConf, SparkContext }
 //import scala.collection.JavaConverters._
 
 object RDDTest {
-
+ 
   def main(args: Array[String]): Unit = {
 
     val conf = new SparkConf().setAppName("Simple Application").setMaster("local[2]")
