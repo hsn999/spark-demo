@@ -42,7 +42,7 @@ object SqlJsonDemo {
     peopleDF.createOrReplaceTempView("people")
 
     // SQL statements can be run by using the sql methods provided by spark
-    val teenagerNamesDF = sparkSession.sql("SELECT name FROM people WHERE age BETWEEN 13 AND 19")
+    val teenagerNamesDF = sparkSession.sql("SELECT name,borthday,to_timestamp(borthday,'yyyy-MM-dd') aaa,to_date(borthday) FROM people WHERE age BETWEEN 13 AND 19")
     teenagerNamesDF.show()
     // +------+
     // |  name|
