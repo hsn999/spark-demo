@@ -130,20 +130,20 @@ object ReMainUser {
       sparkSession.sql(sql2).show(1000,false) */
       
       
-    sparkSession.sql("SELECT to_date('2016-12-31', 'yyyy-MM-dd')").show()
+   // sparkSession.sql("SELECT to_date('2016-12-31', 'yyyy-MM-dd')").show()
 
     
-   /* val remainSql = "SELECT appkey, platform, appver, channel, first_day," +
-      "sum(case when by_day = 0 then 1 else 0 end) day_0," +
-      "sum(case when by_day = 1 then 1 else 0 end) day_1," +
-      "sum(case when by_day = 2 then 1 else 0 end) day_2," +
-      "sum(case when by_day = 3 then 1 else 0 end) day_3," +
-      "sum(case when by_day = 4 then 1 else 0 end) day_4," +
-      "sum(case when by_day = 5 then 1 else 0 end) day_5," +
-      "sum(case when by_day = 6 then 1 else 0 end) day_6," +
-      "sum(case when by_day = 7 then 1 else 0 end) day_7," +
-      "sum(case when by_day = 14 then 1 else 0 end) day_14," +
-      "sum(case when by_day = 30 then 1 else 0 end) day_30 "+
+    val remainSql = "SELECT appkey, platform, appver, channel, first_day," +
+      "sum(case when by_day = 0 then 1 else 0 end)/sum(case when by_day = 0 then 1 else 0 end) day_0," +
+      "sum(case when by_day = 1 then 1 else 0 end)/sum(case when by_day = 0 then 1 else 0 end) day_1," +
+      "sum(case when by_day = 2 then 1 else 0 end)/sum(case when by_day = 0 then 1 else 0 end) day_2," +
+      "sum(case when by_day = 3 then 1 else 0 end)/sum(case when by_day = 0 then 1 else 0 end) day_3," +
+      "sum(case when by_day = 4 then 1 else 0 end)/sum(case when by_day = 0 then 1 else 0 end) day_4," +
+      "sum(case when by_day = 5 then 1 else 0 end)/sum(case when by_day = 0 then 1 else 0 end) day_5," +
+      "sum(case when by_day = 6 then 1 else 0 end)/sum(case when by_day = 0 then 1 else 0 end) day_6," +
+      "sum(case when by_day = 7 then 1 else 0 end)/sum(case when by_day = 0 then 1 else 0 end) day_7," +
+      "sum(case when by_day = 14 then 1 else 0 end)/sum(case when by_day = 0 then 1 else 0 end) day_14," +
+      "sum(case when by_day = 30 then 1 else 0 end)/sum(case when by_day = 0 then 1 else 0 end) day_30 "+
       " FROM " +
       "(" +
           "SELECT  appkey, platform, appver, channel, udid, first_day, datediff(login_time,first_day) as by_day " + //获取应用、平台、版本、渠道、用户、所有登录时间、首次登陆时间,时间差，并按照这些字段分组
@@ -158,7 +158,7 @@ object ReMainUser {
                    "on b.udid = c.udid order by 1,2,3,4,5,6) e order by 1,2,3,4,5,6" +
       ") f " +
       "group by 1,2,3,4,5 order by 1,2,3,4,5"
-    val dayData = sparkSession.sql(remainSql).show(1000,false)*/
+    val dayData = sparkSession.sql(remainSql).show(1000,false)
     
     
 

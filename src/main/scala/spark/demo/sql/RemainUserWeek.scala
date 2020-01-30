@@ -136,16 +136,16 @@ object RemainUserWeek {
     //dataSet1.createTempView("eventinfo")
     //eventinfoDF.createOrReplaceTempView("eventinfo")
     val remainSql = "SELECT appkey, platform, appver, channel, first_week," +
-      "sum(case when by_week = 0 then 1 else 0 end) week_0," +
-      "sum(case when by_week = 1 then 1 else 0 end) week_1," +
-      "sum(case when by_week = 2 then 1 else 0 end) week_2," +
-      "sum(case when by_week = 3 then 1 else 0 end) week_3," +
-      "sum(case when by_week = 4 then 1 else 0 end) week_4," +
-      "sum(case when by_week = 5 then 1 else 0 end) week_5," +
-      "sum(case when by_week = 6 then 1 else 0 end) week_6," +
-      "sum(case when by_week = 7 then 1 else 0 end) week_7," +
-      "sum(case when by_week = 14 then 1 else 0 end) week_14," +
-      "sum(case when by_week = 30 then 1 else 0 end) week_30 "+
+      "sum(case when by_week = 0 then 1 else 0 end)/sum(case when by_week = 0 then 1 else 0 end) week_0," +
+      "sum(case when by_week = 1 then 1 else 0 end)/sum(case when by_week = 0 then 1 else 0 end) week_1," +
+      "sum(case when by_week = 2 then 1 else 0 end)/sum(case when by_week = 0 then 1 else 0 end) week_2," +
+      "sum(case when by_week = 3 then 1 else 0 end)/sum(case when by_week = 0 then 1 else 0 end) week_3," +
+      "sum(case when by_week = 4 then 1 else 0 end)/sum(case when by_week = 0 then 1 else 0 end) week_4," +
+      "sum(case when by_week = 5 then 1 else 0 end)/sum(case when by_week = 0 then 1 else 0 end) week_5," +
+      "sum(case when by_week = 6 then 1 else 0 end)/sum(case when by_week = 0 then 1 else 0 end) week_6," +
+      "sum(case when by_week = 7 then 1 else 0 end)/sum(case when by_week = 0 then 1 else 0 end) week_7," +
+      "sum(case when by_week = 14 then 1 else 0 end)/sum(case when by_week = 0 then 1 else 0 end) week_14," +
+      "sum(case when by_week = 30 then 1 else 0 end)/sum(case when by_week = 0 then 1 else 0 end) week_30 "+
       " FROM " +
       "(" +
       "SELECT  appkey, platform, appver, channel, udid, first_week, FLOOR(datediff(login_time,first_week)/7) as by_week " + //获取应用、平台、版本、渠道、用户、所有登录时间、首次登陆时间,时间差，并按照这些字段分组
