@@ -1,14 +1,13 @@
 # spark-demo
 
-**Spark以反射方式创建DataFrame**  RDD2DataFrameReflection.scala
-
+**Spark SQL **  
 ~~~
 Spark SQL是用于结构化数据处理的Spark模块。与基本的Spark RDD API不同，Spark SQL提供的接口为Spark提供了有关数据结构和正
 在执行的计算的更多信息。在内部，Spark SQL使用这些额外的信息来执行额外的优化。与Spark SQL交互的方法有多种，包括SQL和Dataset API。
 计算结果时，将使用相同的执行引擎，而与要用来表达计算的API /语言无关。这种统一意味着开发人员可以轻松地在不同的API之间来回切换，
 从而提供最自然的方式来表达给定的转换。
 ~~~
-* 反射加载
+* Spark以反射方式创建DataFrame
 ~~~
 val fields = collection.mutable.ListBuffer[StructField]()
     fields += DataTypes.createStructField("name", DataTypes.StringType, true)
@@ -20,6 +19,7 @@ val fields = collection.mutable.ListBuffer[StructField]()
     val dataSet = sparkSession.createDataFrame(rowsRDD, schema)
 
 ~~~
+* Spark以反射方式创建DataFrame
 
 ~~~
 埋点采集，一般是基于日志的计算方式居多，那么日志里记录哪些信息，主要根据你要统计的指标、维度、最后需要的报表结果来定，
