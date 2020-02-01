@@ -16,7 +16,7 @@ import java.util.Date
 
 
 
-object ReMainUser {
+object ReMainUserDay {
   
   def tranTimeToLong(tm:String) :Long={
     val fm = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
