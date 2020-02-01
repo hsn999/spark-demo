@@ -1,6 +1,7 @@
 # spark-demo
 
-**Spark SQL **  
+**Spark SQL**
+
 ~~~
 Spark SQL是用于结构化数据处理的Spark模块。与基本的Spark RDD API不同，Spark SQL提供的接口为Spark提供了有关数据结构和正
 在执行的计算的更多信息。在内部，Spark SQL使用这些额外的信息来执行额外的优化。与Spark SQL交互的方法有多种，包括SQL和Dataset API。
@@ -21,6 +22,7 @@ val fields = collection.mutable.ListBuffer[StructField]()
 ~~~
 * Spark以反射方式创建DataFrame
 
+**埋点相关** 
 ~~~
 埋点采集，一般是基于日志的计算方式居多，那么日志里记录哪些信息，主要根据你要统计的指标、维度、最后需要的报表结果来定，
 理论上前期采集日志里携带的信息越多，后续想要增加一些维度指标时，就越不需要再动埋点处的代码，并且可以有历史日志现成的数据使用，
